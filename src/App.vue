@@ -8,11 +8,10 @@
       <v-spacer></v-spacer>
       <v-btn
         flat
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
+        @click='loginWithGoogle()'
       >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>open_in_new</v-icon>
+        <span class="mr-2">Login with google</span>
+        
       </v-btn>
     </v-toolbar>
 
@@ -23,6 +22,7 @@
 </template>
 
 <script>
+import auth from 'firebase/auth'
 import Home from './components/Home'
 
 export default {
@@ -34,6 +34,15 @@ export default {
     return {
       //
     }
+  },
+  methods: {
+    loginWithGoogle() {
+      firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
+      .then(function(response) {
+        console.log(response.user)
+      })
+    }
   }
+
 }
 </script>
