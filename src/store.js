@@ -17,8 +17,8 @@ const mutations = {
 
 // create actions for mutations for necessary changes
 const actions = {
-    setUser({commit}, user) {
-        commit('SET_USER', user)
+    setUser(state, user) {
+        state.commit('SET_USER', user)
     }
 }
 
