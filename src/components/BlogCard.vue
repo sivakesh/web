@@ -9,7 +9,7 @@
         <v-card-title primary-title>
           <div>
             <h3 class="headline mb-0">{{post.title}}</h3>
-            <div> {{ post.post }} </div>
+            <div class="content_align"> {{ post.post }} </div>
           </div>
         </v-card-title>
 
@@ -54,6 +54,8 @@ export default {
 }
 </script>
 <style scoped>
-
+.content_align {
+  word-break: break-all !important;
+}
 </style>
 
