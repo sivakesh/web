@@ -163,10 +163,32 @@ export default {
     },
     savePost(data) {
       let url = uuidv4() + "-" + this.imageName
-      this.storageRef.child(url).put(this.imageFile)
-      console.log(url)
-      data.image = url
-      this.postsRef.child(data.slug).set(data)
+      this.fileUploadTask = this.storageRef.child(url).put(this.imageFile)
+
+      this.fileUploadTask.on('state_changed', snapshot => {
+                // upload in progress
+                let percent = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                console.log(percent)
+              }, error => {
+                // error
+              
+              }, () => {
+                // upload finished
+                console.log('done')
+               
+                               // recover the url of file
+                this.fileUploadTask.snapshot.ref.getDownloadURL().then(fileUrl => {
+                  
+                  data.image = fileUrl
+                  console.log(data.image)
+                  this.postsRef.child(data.slug).set(data)
+                  console.log(data)
+                })
+              })
+
+      
+      // data.image = url
+     
     },
     pickFile() {
       this.$refs.image.click();
