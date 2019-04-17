@@ -16,13 +16,13 @@ Vue.config.productionTip = false
 
 // Initialize Firebase
 var config = {
-  apiKey: "AIzaSyCs1lLmJJhZZ3ZU5BjLaEo5NfW1Nb_UCa8",
-  authDomain: "sivakesh-raman.firebaseapp.com",
-  databaseURL: "https://sivakesh-raman.firebaseio.com",
-  projectId: "sivakesh-raman",
-  storageBucket: "sivakesh-raman.appspot.com",
-  messagingSenderId: "448801593562"
-};
+  apiKey: "",
+  authDomain: "",
+  databaseURL: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: ""
+}
 firebase.initializeApp(config)
 
 window.firebase = firebase
